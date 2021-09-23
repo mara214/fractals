@@ -1,0 +1,11 @@
+[package]
+name = "fractals"
+version = "0.1.0"
+edition = "2018"
+authors = [ "Maximilian Schulke <hello@schulke.xyz>" ]
+
+[dependencies]
+image = "0.23.14"
+itertools = "0.10.1"
+num-complex = "*"
+rayon = "1.5"
