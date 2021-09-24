@@ -1,5 +1,3 @@
-use std::f32::consts::PI;
-
 use itertools::FoldWhile::{Continue, Done};
 use itertools::Itertools;
 use num_complex::Complex;
@@ -40,16 +38,20 @@ impl Render for JuliaSet {
             .into_inner()
             .0 as u8;
 
-        if i < 24 {
-            return image::Rgb([0, 0, 0]);
-        }
+        let pixel = if i < 24 {
+            image::Rgb([0, 0, 0])
+        } else {
+            let i = i as f32;
 
-        let r = (255 as f32 * (i as f32).exp().sin()) as u8;
-        let g = (128 as f32 * (i as f32).cos()) as u8;
-        let b = (255 as f32 * (i as f32).tan()) as u8;
+            image::Rgb([
+                (255_f32 * i.exp().sin()) as u8,
+                (128_f32 * i.cos()) as u8,
+                (255_f32 * i.tan()) as u8,
+            ])
+        };
 
-        println!("rgb@{}/{} = ({},{},{})", x, y, r, g, b);
+        println!("rgb@{}:{} = {:?}", x, y, pixel);
 
-        image::Rgb([r, g, b])
+        pixel
     }
 }
