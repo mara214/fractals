@@ -36,13 +36,11 @@ impl Render for JuliaSet {
                 _ => Done(acc),
             })
             .into_inner()
-            .0 as u8;
+            .0 as f32;
 
-        let pixel = if i < 24 {
-            image::Rgb([0, 0, 0])
+        let pixel = if i < 24.0 {
+            image::Rgb([4 * i as u8, 2 * i as u8, 4 * i as u8])
         } else {
-            let i = i as f32;
-
             image::Rgb([
                 (255_f32 * i.exp().sin()) as u8,
                 (128_f32 * i.cos()) as u8,
