@@ -1,12 +1,10 @@
-use image::ImageBuffer;
-
-use std::f32::consts::PI;
-
 mod julia;
 mod render;
 
-use julia::JuliaSet;
-use render::Render;
+use self::julia::JuliaSet;
+use self::render::Render;
+use image::ImageBuffer;
+use std::f32::consts::PI;
 
 const WIDTH: u32 = 4096;
 const HEIGHT: u32 = 4096;
